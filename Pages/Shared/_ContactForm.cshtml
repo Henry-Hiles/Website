@@ -1,0 +1,19 @@
+@model IndexModel
+<form method="POST" novalidate>
+    <div>
+        <input type="text" asp-for="Data.Name" autocomplete="off" required />
+        <label asp-for="Data.Name">What's your name?</label>
+        <span asp-validation-for="Data.Name"></span>
+    </div>
+    <div>
+        <input type="text" asp-for="Data.Email" required autocomplete="off" />
+        <label asp-for="Data.Email">What's your email?</label>
+        <span asp-validation-for="Data.Email"></span>
+    </div>
+    <div>
+        <textarea asp-for="Data.Message" rows="2" required autocomplete="off"></textarea>
+        <label asp-for="Data.Message">What's your message?</label>
+        <span asp-validation-for="Data.Message"></span>
+    </div>
+    <button type="submit" id="submit" class="button button-primary">Send</button>
+</form>

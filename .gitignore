@@ -1,0 +1,15 @@
+[Bb]in/
+[Oo]bj/
+
+# SQLite databases
+*.db
+
+# Minified files
+*.min.css
+*.min.js
+
+# Data Protection Keys
+.keys/
+
+*.Development.json
+NuGet.Config

@@ -1,0 +1,20 @@
+@page "/error/{code:int?}"
+@model ErrorModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<div id="small-panel">
+    <h1> There was a @Model.Code error.</h1>
+    <hr />
+    <span>
+        <a id="back" href="#">Go back</a>, or return to our
+        <a asp-page="/Index">home page</a>.
+    </span>
+</div>
+
+@section scripts {
+<script>
+    document.getElementById( "back" ).addEventListener( "click", () => history.go( -1 ) );
+</script>
+}

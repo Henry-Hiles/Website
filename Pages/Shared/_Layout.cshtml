@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - HenryHiles</title>
+    <link rel="shortcut icon" asp-append-version="true" href="favicon.ico">
+    <link rel="icon" href="images/animatedFavicon.gif" asp-append-version="true" type="image/gif">
+    <link rel="stylesheet" asp-append-version="true" href="~/css/site.css" />
+</head>
+
+<body>
+    <section id="header">
+        <span>Header</span>
+        <div id="header-links">
+            <a asp-page="/index" asp-fragment="">Home</a>
+            <a asp-page="/index" asp-fragment="portfolio">My Projects</a>
+            <a asp-page="/index" asp-fragment="contact">Contact</a>
+            <a target="_blank" rel="noreferrer" href="https://github.com/Henry-Hiles">
+                <img src="images/GitHubIcon.png" alt=" GitHub Icon">
+            </a>
+        </div>
+    </section>
+    <div>
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <section id="footer">
+        <div>
+            <h3>My Projects</h3>
+            <p>You can see my projects <a asp-page="index" asp-fragment="portfolio">here</a>.</p>
+        </div>
+        <div>
+            <h3>Contact</h3>
+            <p>You can contact me <a asp-page="index" asp-fragment="contact">here</a>.</p>
+        </div>
+        <div>
+            <h3>About</h3>
+            <p>
+                Hi! I'm Henry Hiles, a full stack .NET developer. I specialize in ASP.NET Core Razor Pages and Blazor.
+            </p>
+        </div>
+    </section>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

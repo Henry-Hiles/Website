@@ -1,0 +1,75 @@
+﻿@page
+@model IndexModel
+@{
+	ViewData["Title"] = "Home page";
+}
+<section id="jumbo">
+	<h1>Henry Hiles</h1>
+	<hr />
+	<p>Full Stack .NET Developer & Discord Bot Developer</p>
+</section>
+<section id="portfolio">
+	<h1>My Projects</h1>
+	<hr dark="true" />
+	<div class="portfolio-items">
+		<a>
+			<img src="images/QuadraticGiveaways.jpg" alt="Quadratic Giveaways">
+			<div>
+				Quadratic Giveaways
+			</div>
+		</a>
+	</div>
+</section>
+<section id="about">
+	<h1>About</h1>
+	<hr />
+	<p>
+		Hi! I'm Henry Hiles, a full stack .NET developer. I specialize in ASP.NET Core Razor Pages.
+	</p>
+	<p>
+		I also create discord bots using node.js, like
+		<a asp-fragment="portfolio">Quadratic Giveaways</a>.
+	</p>
+
+</section>
+<section id="contact">
+	<h1>Contact</h1>
+	<hr dark="true" />
+	<div id="form">
+		<partial name="_ContactForm" />
+	</div>
+</section>
+
+@section scripts {
+<script>
+	window.addEventListener( 'DOMContentLoaded', () => {
+		let onSubmit = () => {
+			//let submit = document.getElementsById( "submit" );
+			//if ( submit ) {
+			//	submit.innerHTML = "Sending Email..."
+			//	submit.disabled = false;
+			//}
+			let formData = new FormData( document.forms[0] );
+			fetch( '', {
+				method: 'post',
+				body: new URLSearchParams( formData )
+			} )
+				.then( response => {
+					return response.text();
+				} )
+				.then( result => {
+					document.getElementById( 'form' ).innerHTML = result;
+					document.forms[0].onsubmit = () => {
+						return onSubmit()
+					};
+					// let submit = document.getElementsById( "submit" );
+					// 	if ( submit ) submit.disabled = false;
+				} );
+			return false;
+		}
+		document.forms[0].onsubmit = () => {
+			return onSubmit()
+		};
+	} );
+</script>
+}
