@@ -10,10 +10,12 @@ namespace HenryHiles.Pages
     public class IndexModel : PageModel
     {
         private readonly IMailSender _mailer;
+        private readonly EmailSettings _emailSettings;
 
-        public IndexModel(IMailSender mailer)
+        public IndexModel(IMailSender mailer, EmailSettings emailSettings)
         {
             _mailer = mailer;
+            _emailSettings = emailSettings;
         }
 
         [BindProperty]
@@ -27,6 +29,7 @@ namespace HenryHiles.Pages
                 {
                     EmailAddress = Data.Email,
                     Name = Data.Name,
+                    To = _emailSettings.FromAddress,
                     Message = Data.Message
                 }, replyTo: Data.Email);
 

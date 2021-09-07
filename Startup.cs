@@ -22,23 +22,22 @@ namespace HenryHiles
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             var mvcBuilder = services.AddRazorPages();
 
             mvcBuilder.AddViewOptions(x => x.HtmlHelperOptions.ClientValidationEnabled = false);
 
-            var awsKeyId = Configuration.GetValue<string>("SesSettings:AwsSettings:AccessKeyId");
-            var fromAddress = Configuration.GetValue<string>("SesSettings:FromAddress");
-            var secretAccessKey = Configuration.GetValue<string>("SesSettings:AwsSettings:SecretAccessKey");
+            var emailSettings = new EmailSettings();
+            Configuration.Bind("emailSettings", emailSettings);
+            services.AddSingleton(emailSettings);
+
 
             services.AddMailer(new SesSettings(
-                new AwsSettings(awsKeyId, secretAccessKey, "us-east-1", "ses"),
-                fromAddress, "Henry Hiles"));
+                new AwsSettings(emailSettings.AwsAccessKeyId, emailSettings.AwsSecretAccessKey, "us-east-1", "ses"),
+                emailSettings.FromAddress, "Henry Hiles"));
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (!env.IsDevelopment())
@@ -49,7 +48,6 @@ namespace HenryHiles
             {
                 app.UseExceptionHandler("/Error");
                 app.UseStatusCodePagesWithReExecute("/error/{0}");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
