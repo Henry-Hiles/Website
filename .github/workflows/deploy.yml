@@ -2,9 +2,9 @@ name: Deploy to VM
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
 
 env:
   DOTNET_VERSION: '5.0.103'
