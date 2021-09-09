@@ -1,0 +1,46 @@
+name: Deploy to VM
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+env:
+  DOTNET_VERSION: '5.0.103'
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_NOLOGO: true
+  PUBLISH_FOLDER: 'a'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Publish
+        run: dotnet publish -c Release -r linux-x64 --self-contained false /p:DebugType=None -o ${{ env.PUBLISH_FOLDER }}
+
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@6f350ca8484d8d55c2e361e74d17e638dabe713a
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+
+      - name: Copy files to VM
+        run: rsync -chav --delete ./a/ ${{ secrets.USER_AND_IP }}:/var/www/HenryHiles/tmp
+
+      - name: Execute remote command
+        run: ssh ${{ secrets.USER_AND_IP }} sudo /var/www/deploy.sh www.henryhiles.com HenryHiles 5137

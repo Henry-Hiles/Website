@@ -83,7 +83,7 @@ section:not(#header) {
   font-size: 1.3em;
   padding: 1.4em 2em;
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: bold;  
   display: flex;
   align-items: center;
   position: sticky;
@@ -105,6 +105,8 @@ section:not(#header) {
 
 #header-links a {
   margin: 0 0.5em;
+  display: flex;
+  align-items: center;
 }
 
 #jumbo {
