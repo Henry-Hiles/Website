@@ -101,6 +101,7 @@ section:not(#header) {
   width: 100%;
   flex-wrap: wrap;
   justify-content: flex-end;
+  align-content: flex-end;
 }
 
 #header-links a {
