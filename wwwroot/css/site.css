@@ -91,7 +91,7 @@ section:not(#header) {
 	transition-duration: 0.5s;
 	transition-property: padding, font-size;
 	width: 100%;
-	z-index: 10;
+	z-index: 1;
 }
 
 .navbar-shrink {
@@ -299,9 +299,10 @@ input[type=text], textarea {
 
 @media(max-width: 900px) {
 	#header {
-		font-size: 1.1em;
+		font-size: 1.3em;
+		
 	}
-
+	
 	body {
 		font-size: 1.1em;
 	}
