@@ -101,7 +101,6 @@ section:not(#header) {
 #header-links {
 	display: flex;
 	flex-wrap: wrap;	
-	
 	justify-content: flex-end;
 	width: 100%;
 }
@@ -299,8 +298,7 @@ input[type=text], textarea {
 
 @media(max-width: 900px) {
 	#header {
-		font-size: 1.3em;
-		font-size: 1em !important;
+		font-size: 1.07em !important;
 	}
 	
 	body {
