@@ -302,7 +302,7 @@ input[type=text], textarea {
 @media(max-width: 900px) {
 	#header {
 		font-size: 1.3em;
-		
+		font-size: 1em !important;
 	}
 	
 	body {
