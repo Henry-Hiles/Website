@@ -13,19 +13,19 @@
     <meta content="#14bc9d" data-react-helmet="true" name="theme-color" />
     <title>@ViewData["Title"] - HenryHiles</title>
     <link rel="shortcut icon" asp-append-version="true" href="favicon.ico">
-    <link rel="icon" href="images/animatedFavicon.gif" asp-append-version="true" type="image/gif">
+    <link rel="icon" href="/images/animatedFavicon.gif" asp-append-version="true" type="image/gif">
     <link rel="stylesheet" asp-append-version="true" href="~/css/site.css" />
 </head>
 
 <body>
     <section id="header">
-        <span>Header</span>
+        <a asp-page="/index" class="mobile-hide" asp-fragment=""><span>Header</span></a>
         <div id="header-links">
             <a asp-page="/index" asp-fragment="">Home</a>
             <a asp-page="/index" asp-fragment="portfolio">My Projects</a>
             <a asp-page="/index" asp-fragment="contact">Contact</a>
-            <a target="_blank" rel="noreferrer" href="https://github.com/Henry-Hiles">
-                <img src="images/GitHubIcon.png" alt=" GitHub Icon">
+            <a target="_blank" class="mobile-hide" rel="noreferrer" href="https://github.com/Henry-Hiles">
+                <img src="/images/GitHubIcon.png" alt=" GitHub Icon">
             </a>
         </div>
     </section>

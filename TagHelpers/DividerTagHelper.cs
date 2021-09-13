@@ -11,6 +11,5 @@ public class DividerTagHelper : TagHelper
         output.TagName = "i";
         output.Attributes.SetAttribute("class", "divider-icon" + (IsDark ? " divider-icon-dark" : ""));
         output.TagMode = TagMode.StartTagAndEndTag;
-        // <i class="divider-icon-dark divider-icon"></i>
     }
 }

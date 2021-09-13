@@ -44,11 +44,11 @@
 <script>
 	window.addEventListener( 'DOMContentLoaded', () => {
 		let onSubmit = () => {
-			//let submit = document.getElementsById( "submit" );
-			//if ( submit ) {
-			//	submit.innerHTML = "Sending Email..."
-			//	submit.disabled = false;
-			//}
+			let submit = document.getElementsById( "submit" );
+			if ( submit ) {
+				submit.innerHTML = "Sending Email..."
+				submit.disabled = true;
+			}
 			let formData = new FormData( document.forms[0] );
 			fetch( '', {
 				method: 'post',
@@ -62,8 +62,8 @@
 					document.forms[0].onsubmit = () => {
 						return onSubmit()
 					};
-					// let submit = document.getElementsById( "submit" );
-					// 	if ( submit ) submit.disabled = false;
+					let submit = document.getElementsById( "submit" );
+					submit.disabled = true;
 				} );
 			return false;
 		}
