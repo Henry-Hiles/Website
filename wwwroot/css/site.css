@@ -94,10 +94,8 @@ section:not(#header) {
 	z-index: 1;
 }
 
-@media (min-width: 900px) {
-	.navbar-shrink {
-		font-size: 1em !important;
-	}
+.navbar-shrink {
+	font-size: 1em !important;
 }
 
 #header-links {
