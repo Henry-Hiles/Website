@@ -100,7 +100,8 @@ section:not(#header) {
 
 #header-links {
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: wrap;	
+	
 	justify-content: flex-end;
 	width: 100%;
 }
@@ -297,6 +298,14 @@ input[type=text], textarea {
 }
 
 @media(max-width: 900px) {
+	#header {
+		font-size: 1.1em;
+	}
+
+	body {
+		font-size: 1.1em;
+	}
+
 	#contact input[type=text] + label, #contact textarea + label {
 		font-size: 1.2em !important;
 		top: -20% !important;
