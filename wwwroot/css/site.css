@@ -332,7 +332,12 @@ input[type=text]:focus, textarea:focus {
 	text-align: center;
 }
 
+.small-panel h1 {
+	text-align: center;
+}
+
 .small-panel {
+	justify-content: center;
 	align-items: center;
 	background-color: var(--primary);
 	color: white;
