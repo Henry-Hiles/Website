@@ -42,9 +42,10 @@
 
 @section scripts {
 <script>
-	window.addEventListener( 'DOMContentLoaded', () => {
+	@* window.addEventListener( 'DOMContentLoaded', () => { *@
 		let onSubmit = () => {
-			let submit = document.getElementsById( "submit" );
+			let submit = document.getElementById( "submit" );
+			let sumbitHTML = submit.innerHTML;
 			if ( submit ) {
 				submit.innerHTML = "Sending Email..."
 				submit.disabled = true;
@@ -59,17 +60,14 @@
 				} )
 				.then( result => {
 					document.getElementById( 'form' ).innerHTML = result;
-					document.forms[0].onsubmit = () => {
-						return onSubmit()
-					};
-					let submit = document.getElementsById( "submit" );
-					submit.disabled = true;
+					document.forms[0].onsubmit = onSubmit;
+					let submit = document.getElementById( "submit" );
+					submit.disabled = false;
+					submit.innerHTML = sumbitHTML;
 				} );
 			return false;
 		}
-		document.forms[0].onsubmit = () => {
-			return onSubmit()
-		};
-	} );
+	document.forms[0].onsubmit = onSubmit;
+	@* } ); *@
 </script>
 }
