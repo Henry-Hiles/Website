@@ -42,32 +42,30 @@
 
 @section scripts {
 <script>
-	@* window.addEventListener( 'DOMContentLoaded', () => { *@
-		let onSubmit = () => {
-			let submit = document.getElementById( "submit" );
-			let sumbitHTML = submit.innerHTML;
-			if ( submit ) {
-				submit.innerHTML = "Sending Email..."
-				submit.disabled = true;
-			}
-			let formData = new FormData( document.forms[0] );
-			fetch( '', {
-				method: 'post',
-				body: new URLSearchParams( formData )
-			} )
-				.then( response => {
-					return response.text();
-				} )
-				.then( result => {
-					document.getElementById( 'form' ).innerHTML = result;
-					document.forms[0].onsubmit = onSubmit;
-					let submit = document.getElementById( "submit" );
-					submit.disabled = false;
-					submit.innerHTML = sumbitHTML;
-				} );
-			return false;
+	let onSubmit = () => {
+		let submit = document.getElementById( "submit" );
+		let sumbitHTML = submit.innerHTML;
+		if ( submit ) {
+			submit.innerHTML = "Sending Email..."
+			submit.disabled = true;
 		}
+		let formData = new FormData( document.forms[0] );
+		fetch( '', {
+			method: 'post',
+			body: new URLSearchParams( formData )
+		} )
+			.then( response => {
+				return response.text();
+			} )
+			.then( result => {
+				document.getElementById( 'form' ).innerHTML = result;
+				document.forms[0].onsubmit = onSubmit;
+				let submit = document.getElementById( "submit" );
+				submit.disabled = false;
+				submit.innerHTML = sumbitHTML;
+			} );
+		return false;
+	}
 	document.forms[0].onsubmit = onSubmit;
-	@* } ); *@
 </script>
 }
