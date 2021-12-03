@@ -1,26 +1,43 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using DevTrends.AwsClients;
+using DevTrends.Mailer;
 
-namespace HenryHiles
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddRazorPages();
+
+var mvcBuilder = builder.Services.AddRazorPages();
+
+mvcBuilder.AddViewOptions(x => x.HtmlHelperOptions.ClientValidationEnabled = false);
+
+var emailSettings = new EmailSettings();
+builder.Configuration.Bind("emailSettings", emailSettings);
+builder.Services.AddSingleton(emailSettings);
+
+
+builder.Services.AddMailer(new SesSettings(
+    new AwsSettings(emailSettings.AwsAccessKeyId, emailSettings.AwsSecretAccessKey, "us-east-1", "ses"),
+    emailSettings.FromAddress, "Henry Hiles"));
+
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
-
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
-    }
+    app.UseDeveloperExceptionPage();
 }
+else
+{
+    app.UseExceptionHandler("/Error");
+    app.UseStatusCodePagesWithReExecute("/error/{0}");
+    app.UseHsts();
+}
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapRazorPages();
+
+app.Run();
