@@ -24,7 +24,7 @@ public class IndexModel : PageModel
     {
         if (ModelState.IsValid)
         {
-            if (Request.IsAjaxRequest() && Request.GetIp() != "156.146.63.17")
+            if (Request.IsAjaxRequest() && (Request.GetIp() != "156.146.63.17"))
                 await _mailer.SendEmail(
                     new ContactUsEmail(Data.Email, Data.Name, Data.Message, _emailSettings.FromAddress, Request.GetIp()),
                     replyTo: Data.Email

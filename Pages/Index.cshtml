@@ -52,12 +52,11 @@
 			let formData = new FormData( event.target )
 			const response = await fetch( '', {
 				method: 'post',
-				body: new URLSearchParams( formData )
+				body: new URLSearchParams( formData ),
+				headers: { "X-Requested-With": "XMLHttpRequest" }
 			} )
 			const result = await response.text()
 			event.target.innerHTML = result
-			submit.disabled = false
-			submit.innerText = sumbitText
 		} catch ( error ) {
 			console.log( error )
 		}
