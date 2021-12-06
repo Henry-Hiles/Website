@@ -7,7 +7,13 @@
             "request": "launch",
             "preLaunchTask": "build",
             "program": "${workspaceFolder}/bin/Debug/net6.0/HenryHiles.dll",
-            "args": [],
+            "args": [
+                "watch",
+                "run",
+                "${workspaceFolder}/HenryHiles.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
             "serverReadyAction": {

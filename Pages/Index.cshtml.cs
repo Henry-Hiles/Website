@@ -18,23 +18,19 @@ public class IndexModel : PageModel
     }
 
     [BindProperty]
-    public ViewModel Data { get; set; }
+    public ViewModel Data { get; set; } = default!;
 
     public async Task<PartialViewResult> OnPost()
     {
-        if (ModelState.IsValid)
-        {
-            await _mailer.SendEmail(new ContactUsEmail
-            {
-                EmailAddress = Data.Email,
-                Name = Data.Name,
-                To = _emailSettings.FromAddress,
-                Message = Data.Message,
-                Ip = Request.GetIp()
-            }, replyTo: Data.Email);
-
-            return Partial("_ContactSuccess");
-        }
+        // if (ModelState.IsValid)
+        // {
+        //     if (Request.IsAjaxRequest() && Request.GetIp() != "156.146.63.17")
+        //         await _mailer.SendEmail(
+        //             new ContactUsEmail(Data.Email, Data.Name, Data.Message, _emailSettings.FromAddress, Request.GetIp()),
+        //             replyTo: Data.Email
+        //         );
+        //     return Partial("_ContactSuccess");
+        // }
         return Partial("_ContactForm");
     }
 

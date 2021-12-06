@@ -42,30 +42,25 @@
 
 @section scripts {
 <script>
-	let onSubmit = () => {
-		let submit = document.getElementById( "submit" );
-		let sumbitHTML = submit.innerHTML;
-		if ( submit ) {
+	document.addEventListener( "submit", async ( event ) => {
+		event.preventDefault()
+		try {
+			let submit = document.querySelector( "#submit" )
+			let sumbitText = submit.innerHTML
 			submit.innerHTML = "Sending Email..."
-			submit.disabled = true;
-		}
-		let formData = new FormData( document.forms[0] );
-		fetch( '', {
-			method: 'post',
-			body: new URLSearchParams( formData )
-		} )
-			.then( response => {
-				return response.text();
+			submit.disabled = true
+			let formData = new FormData( event.target )
+			const response = await fetch( '', {
+				method: 'post',
+				body: new URLSearchParams( formData )
 			} )
-			.then( result => {
-				document.getElementById( 'form' ).innerHTML = result;
-				document.forms[0].onsubmit = onSubmit;
-				let submit = document.getElementById( "submit" );
-				submit.disabled = false;
-				submit.innerHTML = sumbitHTML;
-			} );
-		return false;
-	}
-	document.forms[0].onsubmit = onSubmit;
+			const result = await response.text()
+			event.target.innerHTML = result
+			submit.disabled = false
+			submit.innerText = sumbitText
+		} catch ( error ) {
+			console.log( error )
+		}
+	} )
 </script>
 }

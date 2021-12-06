@@ -28,10 +28,8 @@ else
 {
     app.UseExceptionHandler("/Error");
     app.UseStatusCodePagesWithReExecute("/error/{0}");
-    app.UseHsts();
 }
 
-app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
