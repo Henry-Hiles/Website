@@ -1,4 +1,5 @@
 using DevTrends.AwsClients;
+using DevTrends.ConfigurationExtensions;
 using DevTrends.Mailer;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,14 +10,11 @@ var mvcBuilder = builder.Services.AddRazorPages();
 
 mvcBuilder.AddViewOptions(x => x.HtmlHelperOptions.ClientValidationEnabled = false);
 
-var emailSettings = new EmailSettings();
-builder.Configuration.Bind("emailSettings", emailSettings);
+var emailSettings = builder.Configuration.Bind<SesSettings>();
+
 builder.Services.AddSingleton(emailSettings);
 
-
-builder.Services.AddMailer(new SesSettings(
-    new AwsSettings(emailSettings.AwsAccessKeyId, emailSettings.AwsSecretAccessKey, "us-east-1", "ses"),
-    emailSettings.FromAddress, "Henry Hiles"));
+builder.Services.AddMailer(emailSettings);
 
 var app = builder.Build();
 

@@ -55,8 +55,7 @@
 				body: new URLSearchParams( formData ),
 				headers: { "X-Requested-With": "XMLHttpRequest" }
 			} )
-			const result = await response.text()
-			event.target.innerHTML = result
+			event.target.innerHTML = await response.text()
 		} catch ( error ) {
 			console.log( error )
 		}

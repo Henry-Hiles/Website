@@ -4,14 +4,15 @@ using HenryHiles.Pages._EmailTemplates;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using HenryHiles.Helpers;
+using DevTrends.AwsClients;
 
 namespace HenryHiles.Pages;
 public class IndexModel : PageModel
 {
     private readonly IMailSender _mailer;
-    private readonly EmailSettings _emailSettings;
+    private readonly SesSettings _emailSettings;
 
-    public IndexModel(IMailSender mailer, EmailSettings emailSettings)
+    public IndexModel(IMailSender mailer, SesSettings emailSettings)
     {
         _mailer = mailer;
         _emailSettings = emailSettings;
