@@ -1,0 +1,75 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+	background-image: url(images/background.png);
+	background-size: cover;
+	height: 100vh;
+	font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		"Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	overflow: hidden;
+}
+
+.title {
+	z-index: 10;
+	position: absolute;
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	inset: 0;
+	color: #eff2f5;
+	margin: 0;
+	flex-direction: column;
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+.subtitle {
+	margin-top: 0.5rem;
+}
+
+.hide {
+	display: none;
+}
+
+.bird {
+	--bird-top: -1000;
+	--bird-size: 60px;
+	user-select: none;
+	position: absolute;
+	width: var(--bird-size);
+	left: var(--bird-size);
+	top: calc(var(--bird-top) * 1px);
+	border-radius: 50%;
+}
+
+.pipe {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: calc(var(--pipe-width) * 1px);
+	left: calc(var(--pipe-left) * 1px);
+}
+
+.pipe > .segment {
+	position: absolute;
+	width: 100%;
+	background-size: 100% 1200px;
+}
+
+.pipe > .top {
+	top: 0;
+	bottom: calc(var(--hole-top) * 1px);
+	background-image: url(images/pipe.png);
+	transform: scaleY(-1);
+}
+
+.pipe > .bottom {
+	bottom: 0;
+	top: calc(100vh - (var(--hole-top) * 1px) + calc(var(--hole-height) * 1px));
+	background-image: url(imagespipe.png);
+}

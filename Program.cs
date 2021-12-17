@@ -28,6 +28,7 @@ else
     app.UseStatusCodePagesWithReExecute("/error/{0}");
 }
 
+app.UseDefaultFiles();
 app.UseStaticFiles();
 
 app.UseRouting();
