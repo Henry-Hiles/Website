@@ -1,0 +1,59 @@
+@page
+@model FlappyBirdModel
+@{
+    ViewData["Title"] = "Projects - Flappy Bird";
+}
+<section id="intro">
+    <h1>Flappy Bird</h1>
+    <hr />
+    <p>A simple flappy bird game, made with html elements, CSS, and JavaScript. Made without using canvas.</p>
+    <hr round="true" />
+</section>
+<section id="details">
+    <div class="row">
+        <div class="long-description">
+            <div>
+                <h2>Overview</h2>
+                <hr />
+                <p>
+                    A simple flappy bird game, made with the technologies listed below.
+                    <br><br>
+                    It uses a modular design, with many JS files working together. It uses ES6 arrow functions for the
+                    most part.
+                </p>
+            </div>
+            <div>
+                <h2>Technologies</h2>
+                <hr>
+                <p>
+                    This project was built using handcrafted HTML, CSS, and JavaScript, and canvas wasn't used.
+                    <br><br>
+                    It uses no bloated frontend technologies, making for quick loading times and fewer requests.
+                </p>
+            </div>
+        </div>
+        <a href="#" class="screenshots">
+            <div class="computer">
+                <img src="/images/flappyComputer1.png" alt="Image of Flappy Bird Project">
+            </div>
+
+            <div class="computer">
+                <img src="/images/flappyComputer2.png" alt="Image of Flappy Bird Project">
+            </div>
+
+            <div class="mobile">
+                <img src="/images/flappyMobile.png" alt="Image of Flappy Bird Project">
+            </div>
+        </a>
+    </div>
+    <hr round="true" />
+</section>
+<section id="demo-link">
+    <h1>Live Demo</h1>
+    <hr />
+    <a href="#" class="computer">
+        <img src="/images/flappyComputer2.png"
+            alt="Image of Flappy Bird Project">
+        <img src="~/images/play.png" class="play" alt="Go to Flappy Bird Demo">
+    </a>
+</section>

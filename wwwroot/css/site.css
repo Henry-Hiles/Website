@@ -5,7 +5,9 @@
 
 body {
 	margin: 0;
-	font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		"Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	font-size: 1.2em;
 	scroll-behavior: smooth;
 }
@@ -16,7 +18,9 @@ main {
 	min-height: calc(98.2vh - 350px);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
 	box-sizing: border-box;
 }
 
@@ -73,7 +77,7 @@ p {
 }
 
 section:not(#header) {
-	padding: 2rem;
+	padding: 5rem;
 }
 
 #header {
@@ -85,6 +89,7 @@ section:not(#header) {
 	font-weight: bold;
 	overflow: hidden;
 	padding: 1.4em 2em;
+	padding-bottom: 10px;
 	position: sticky;
 	text-transform: uppercase;
 	top: 0;
@@ -100,21 +105,25 @@ section:not(#header) {
 
 #header-links {
 	display: flex;
-	flex-wrap: wrap;	
+	flex-wrap: wrap;
 	justify-content: flex-end;
 	width: 100%;
 }
 
 #jumbo {
-	background-color: var(--primary);
+	--background: var(--primary);
+	position: relative;
+	background-color: var(--secondary);
 	color: white;
 	font-size: 2em;
+	padding-top: 5px !important;
 	padding: 0.5em;
 	text-align: center;
 }
 
 #portfolio {
-	color: var(--secondary);
+	color: white;
+	background-color: var(--primary);
 	text-align: center;
 }
 
@@ -128,7 +137,10 @@ section:not(#header) {
 	justify-content: center;
 	margin: 2.5em auto;
 	margin-inline: auto;
-	max-width: calc((var(--colsWidth) * var(--colsMax)) + (var(--colsGap) * (var(--colsMax) - 1)));
+	max-width: calc(
+		(var(--colsWidth) * var(--colsMax)) +
+			(var(--colsGap) * (var(--colsMax) - 1))
+	);
 	row-gap: 1em;
 }
 
@@ -140,17 +152,18 @@ section:not(#header) {
 
 #portfolio .portfolio-items img {
 	border-radius: 1rem;
-	box-shadow: 0.5em 0.5em 3em 0.7em rgba(0,0,0,0.25), -0.5em -0.5em 3em 0.7em rgba(0,0,0,0.22);
+	box-shadow: 0.5em 0.5em 3em 0.7em rgba(0, 0, 0, 0.25),
+		-0.5em -0.5em 3em 0.7em rgba(0, 0, 0, 0.22);
 	height: 13em;
 	width: 13em;
 }
 
 #portfolio .portfolio-items div {
-	background-color: rgba(0,0,0,.3);
+	background-color: rgba(0, 0, 0, 0.3);
 	border-bottom-left-radius: 1rem;
 	border-bottom-right-radius: 1rem;
 	bottom: 0;
-	color: white;
+	color: #f5f5f5;
 	font-size: 1em;
 	left: 0%;
 	padding: 0.1em;
@@ -160,20 +173,22 @@ section:not(#header) {
 }
 
 #about {
-	background-color: var(--primary);
-	color: white;
+	background-color: var(--secondary);
+	color: #f5f5f5;
 	padding: 1em;
 	text-align: center;
 }
 
 #contact {
-	color: var(--secondary);
+	color: #f5f5f5;
+	background-color: var(--primary);
 	text-align: center;
 }
 
 #footer {
 	background-color: var(--secondary);
-	color: white;
+	color: #f5f5f5;
+	border-top: 2px solid;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
@@ -192,15 +207,15 @@ section:not(#header) {
 .button {
 	border: none;
 	border-radius: 2em;
-	color: white;
+	color: #f5f0f0;
 	font-size: 1em;
 	margin: 1em auto;
 	padding: 0.7rem 1.6rem;
 	text-decoration: none;
 }
 
-.button-primary {
-	background-color: var(--primary);
+.button-secondary {
+	background-color: var(--secondary);
 }
 
 .button:hover {
@@ -221,16 +236,11 @@ section:not(#header) {
 	position: relative;
 	width: 2.1rem;
 }
-
-.divider-icon-dark {
-	--color: var(--secondary);
-	background-image: url(../images/blackStar.svg);
-}
-
-.divider-icon::before, .divider-icon::after {
+.divider-icon::before,
+.divider-icon::after {
 	border-bottom: 0.5rem solid var(--color, white);
 	border-radius: 5em;
-	content: '';
+	content: "";
 	margin: 0 1em;
 	position: absolute;
 	top: 50%;
@@ -249,9 +259,11 @@ textarea {
 	min-height: 2.5em;
 }
 
-input[type=text], textarea {
+input[type="text"],
+textarea {
 	border: none;
-	border-bottom: 0.05em solid var(--secondary);
+	background-color: transparent;
+	border-bottom: 0.05em solid white;
 	display: block;
 	font-family: inherit;
 	font-size: 3rem;
@@ -269,14 +281,14 @@ input[type=text], textarea {
 }
 
 #contact form div label {
-	color: var(--secondary);
+	color: #f5f5f5;
 	display: block;
 	font-size: 3em;
 	margin: initial 20em;
 	pointer-events: none;
 	position: absolute;
 	text-align: center;
-	top: -10%;
+	top: -20%;
 	transition: top, font-size;
 	transition-duration: 0.5s;
 	width: 100%;
@@ -287,25 +299,30 @@ input[type=text], textarea {
 	scrollbar-width: none;
 }
 
-#contact input[type=text]:focus + label, #contact textarea:focus + label, #contact input[type=text]:valid + label, #contact textarea:valid + label {
-	font-size: 1.2em;
+#contact input[type="text"]:focus + label,
+#contact textarea:focus + label,
+#contact input[type="text"]:valid + label,
+#contact textarea:valid + label {
+	font-size: 1em;
 	top: -13%;
 }
 
-#contact input[type=text]:valid, #contact textarea:valid {
+#contact input[type="text"]:valid,
+#contact textarea:valid {
 	border-color: green;
 }
 
-@media(max-width: 900px) {
+@media (max-width: 900px) {
 	#header {
 		font-size: 1.07em !important;
 	}
-	
+
 	body {
 		font-size: 1.1em;
 	}
 
-	#contact input[type=text] + label, #contact textarea + label {
+	#contact input[type="text"] + label,
+	#contact textarea + label {
 		font-size: 1.2em !important;
 		top: -20% !important;
 	}
@@ -314,17 +331,18 @@ input[type=text], textarea {
 		padding: 6rem 2rem;
 	}
 
-    .mobile-hide {
+	.mobile-hide {
 		display: none !important;
 	}
 
-    #header-links {
+	#header-links {
 		justify-content: center;
 	}
 }
 
 textarea:focus,
-input[type=text]:focus, textarea:focus {
+input[type="text"]:focus,
+textarea:focus {
 	outline: 0;
 }
 
@@ -356,4 +374,158 @@ input[type=text]:focus, textarea:focus {
 
 button.button {
 	cursor: pointer;
+}
+
+#details,
+#intro,
+#demo-link {
+	display: flex;
+	color: white;
+	position: relative;
+	text-align: center;
+	flex-direction: column;
+}
+
+#intro {
+	--background: var(--primary);
+	background-color: var(--secondary);
+	padding-top: 50px !important;
+}
+
+#details {
+	--background: var(--secondary);
+	padding-top: 70px !important;
+	background-color: var(--primary);
+}
+
+#demo-link {
+	background-color: var(--secondary);
+}
+
+.round-divider {
+	color: var(--background);
+}
+
+.round-divider svg {
+	position: absolute;
+	bottom: 0;
+	overflow: hidden;
+	left: 0;
+	width: 100%;
+	height: 3rem;
+}
+
+img,
+svg {
+	vertical-align: middle;
+}
+
+.screenshots .computer {
+	width: 400px;
+	height: 225px;
+}
+
+.long-description {
+	min-width: 45%;
+}
+
+.screenshots .mobile {
+	width: 125px;
+	height: 225px;
+	margin-top: 20px;
+}
+
+.screenshots {
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+	gap: 50px;
+	justify-content: space-evenly;
+}
+
+.computer:after {
+	background-image: url(../images/computer.png);
+	height: 350px;
+	width: 440px;
+	transform: translate(-420px, -17px);
+}
+
+.mobile:after {
+	background-image: url(../images/phone.png);
+	width: 130px;
+	height: 250px;
+	transform: translate(-127px, -15px);
+}
+
+.computer:after,
+.mobile:after {
+	content: "";
+	position: absolute;
+	background-size: 100% 100%;
+}
+
+.row {
+	display: flex;
+}
+
+@media (max-width: 1700px) {
+	.row {
+		display: block;
+	}
+
+	.screenshots div {
+		margin-bottom: 150px;
+	}
+
+	.screenshots div:last-child {
+		margin-bottom: 40px;
+	}
+}
+
+@media (max-width: 470px) {
+	.computer:after {
+		background-image: url(../images/computer.png);
+		height: 270px;
+		width: 335px;
+		transform: translate(-320px, -17px);
+	}
+
+	.screenshots .computer {
+		width: 300px;
+		height: 200px;
+		margin-bottom: 20px;
+	}
+}
+
+#demo-link img {
+	border-radius: 10px;
+	width: 400px;
+}
+
+#demo-link a {
+	display: inline;
+	margin: auto;
+}
+
+.long-description :first-child {
+	margin-top: 0;
+}
+
+#demo-link a {
+	margin-bottom: 100px;
+	margin-top: 30px;
+	position: relative;
+}
+
+#demo-link .play {
+	width: 50px;
+	position: absolute;
+	z-index: 10;
+	right: 50%;
+	bottom: 50%;
+	transform: translate(50%, 50%);
+}
+
+.portfolio-items a {
+	text-decoration: none;
 }
