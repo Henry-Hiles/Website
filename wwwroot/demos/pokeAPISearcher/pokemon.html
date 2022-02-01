@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" asp-append-version="true" href="/site.css" />
+    <title>PokéAPI</title>
+</head>
+
+<body>
+    <div>
+        <h1>PokeAPI</h1>
+        <h3>Choose Pokémon</h3>
+        <select id="select">
+            <option selected>Please Choose</option>
+        </select>
+
+        <div class="pokemon not-loaded single-card" data-pokemon>
+            <img data-image class="skeleton" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png">
+            <h2 data-name>
+                <div class="skeleton skeleton-text"></div>
+            </h2>
+            <div data-types>
+                <div>
+                    <img class="skeleton" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png">
+                    <span class="skeleton skeleton-text type-name"></span>
+                </div>
+                <div>
+                    <img class="skeleton" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png">
+                    <span class="skeleton skeleton-text type-name"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const select = document.querySelector( "#select" );
+
+        ( async () => {
+            const responce = await fetch( `https://pokeapi.co/api/v2/pokemon?limit=9999` )
+            const result = await responce.json()
+            result.results.forEach( pokemon => {
+                const element = document.createElement( "option" )
+                element.textContent = pokemon.name
+                element.value = pokemon.name
+                select.append( element )
+            } )
+        } )()
+
+        select.addEventListener( "change", async event => {
+            const pokemonResponce = await fetch( `https://pokeapi.co/api/v2/pokemon/${event.target.value}` )
+            const pokemon = await pokemonResponce.json()
+            const card = document.querySelector( "[data-pokemon]" )
+            card.classList.remove( "not-loaded" )
+
+            const img = card.querySelector( "[data-image]" )
+            const types = card.querySelector( "[data-types]" )
+            img.addEventListener( 'load', () => img.classList.remove( "skeleton" ) )
+            img.src = pokemon.sprites.front_default
+            card.querySelector( "[data-name]" ).textContent = pokemon.name
+
+            if ( pokemon.types.length == 1 ) {
+                types.children[1].remove()
+            }
+
+            pokemon.types.forEach( ( type, i ) => {
+                const typeElement = types.children[i]
+                const typeName = type.type.name
+                const typeImage = typeElement.children[0]
+                typeImage.addEventListener( 'load', () => typeImage.classList.remove( "skeleton" ) )
+                typeImage.src = `images/${typeName}.png`
+                const typeNameElement = typeElement.children[1]
+                typeNameElement.innerText = typeName
+                typeNameElement.classList.remove( "skeleton", "skeleton-text" )
+            } );
+        } )
+    </script>
+</body>
+
+</html>
