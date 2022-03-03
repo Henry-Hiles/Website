@@ -1,155 +1,171 @@
 :root {
-	--primary: #14bbaa;
-	--secondary: #2c3c4c;
+    --primary: #14bbaa;
+    --secondary: #2c3c4c;
 }
 body {
-	background-color: var(--primary);
-	font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-	font-size: x-large;
-	margin: 0;
+    background-color: var(--primary);
+    font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+        "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: x-large;
+    margin: 0;
 }
-body > div {
-	background-color: white;
-	border: 1px solid var(--secondary);
-	border-radius: 25px;
-	margin: 200px auto;
-	max-width: 80%;
-	padding: 0 50px;
-	padding-bottom: 25px;
-	text-align: center;
-	width: 2000px;
+body > main {
+    background-color: white;
+    border: 1px solid var(--secondary);
+    border-radius: 25px;
+    margin: 50px auto;
+    max-width: 80%;
+    padding-bottom: 25px;
+    text-align: center;
+    width: 2000px;
 }
+
+main h1 {
+    background-color: var(--secondary);
+    color: white;
+    margin-top: 0;
+    border-radius: 20px 20px 0 0;
+    padding: 20px 0;
+}
+
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 select,
 select * {
-	text-transform: capitalize;
+    text-transform: capitalize;
 }
 .pokemon.not-loaded {
-	display: none;
+    display: none;
 }
 .pokemon {
-	background-color: #a9dff1;
-	border: 1px solid var(--secondary);
-	border-radius: 20px;
-	margin: auto;
-	padding: 20px;
-	width: 300px;
+    background-color: #a9dff1;
+    border: 1px solid var(--secondary);
+    border-radius: 20px;
+    margin: auto;
+    padding: 20px;
+    width: 300px;
 }
-[data-types] div, [data-image] {
-	background-color: #e0f1f7;
+[data-types] div,
+[data-image] {
+    background-color: #e0f1f7;
 }
 .skeleton {
-	animation: skeleton-loading 1s linear infinite alternate;
-	opacity: 70%;
+    animation: skeleton-loading 1s linear infinite alternate;
+    opacity: 70%;
 }
 .pokemon-option {
-	text-transform: capitalize;
+    text-transform: capitalize;
 }
 [data-image] {
-	border: 1px solid var(--secondary);
-	border-radius: 5px;
-	height: 260px;
-	margin: auto;
-	width: 260px;
+    border: 1px solid var(--secondary);
+    border-radius: 5px;
+    height: 260px;
+    margin: auto;
+    width: 260px;
 }
 [data-name] {
-	margin: auto;
-	margin-bottom: 5px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	text-transform: capitalize;
-	white-space: nowrap;
+    margin: auto;
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    white-space: nowrap;
 }
 [data-types] img {
-	border-radius: 20px;
-	height: 25px;
-	width: 25px;
+    border-radius: 20px;
+    height: 25px;
+    width: 25px;
 }
 [data-types] > button {
-	align-items: center;
-	border: 1px solid var(--secondary);
-	border-radius: 25px;
-	display: inline-flex;
-	justify-content: center;
-	padding: 2px 2px;
-	width: 45%;
+    align-items: center;
+    border: 1px solid var(--secondary);
+    border-radius: 25px;
+    display: inline-flex;
+    justify-content: center;
+    padding: 2px 2px;
+    width: 45%;
 }
 [data-types] > button:hover {
-	filter: brightness(90%);
-	cursor: pointer;
+    filter: brightness(90%);
+    cursor: pointer;
 }
 .single-card {
-	margin: 20px auto;
-	width: 200px;
+    margin: 20px auto;
+    width: 200px;
 }
 [data-types] .type-name {
-	display: inline;
-	font-size: 20px;
-	font-weight: 450;
-	margin: 0 5px;
-	text-transform: capitalize;
+    display: inline;
+    font-size: 20px;
+    font-weight: 450;
+    margin: 0 5px;
+    text-transform: capitalize;
 }
 #cards {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 20px;
-	justify-content: center;
-	margin: 0 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vw;
+    padding: 20px;
 }
 .skeleton-text {
-	border-radius: 0.125rem;
-	height: 0.5em;
-	margin: 20px auto;
-	width: 90%;
+    border-radius: 0.125rem;
+    height: 0.5em;
+    margin: 20px auto;
+    width: 90%;
 }
 .skeleton-text:last-child {
-	margin-bottom: 0;
-	width: 80%;
+    margin-bottom: 0;
+    width: 80%;
 }
 label {
-	display: block;
+    display: block;
 }
 select {
-	border: 1px solid var(--secondary);
-	border-radius: 5px;
-	font-size: 20px;
-	height: 30px;
-	width: 200px;
+    border: 1px solid var(--secondary);
+    border-radius: 5px;
+    font-size: 20px;
+    height: 30px;
+    width: 200px;
 }
 @keyframes skeleton-loading {
-	0% {
-		background-color: #a3b8c2;
-	}
-	100% {
-		background-color: #f0f3f5;
-	}
+    0% {
+        background-color: #a3b8c2;
+    }
+    100% {
+        background-color: #f0f3f5;
+    }
 }
-a, .see-more {
-	color: #373373;
-	text-decoration: none;
+a,
+.see-more {
+    color: #373373;
+    text-decoration: none;
 }
-a:hover, .see-more:hover {
-	color: #0056b3;
-	text-decoration: underline;
+a:hover,
+.see-more:hover {
+    color: #0056b3;
+    text-decoration: underline;
 }
 .see-more {
-	background-color: transparent;
-	border: none;
-	font-size: inherit;
-	margin: 20px auto;
+    background-color: transparent;
+    border: none;
+    font-size: inherit;
+    margin: 20px auto;
 }
 .see-more:hover {
-	cursor: pointer;
+    cursor: pointer;
 }
 .hidden {
-	display: none;
+    display: none;
 }
 #none {
-	color: #6c757d;
+    color: #6c757d;
+}
+
+#filters {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
 }

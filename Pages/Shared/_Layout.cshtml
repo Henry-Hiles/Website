@@ -18,8 +18,8 @@
 </head>
 
 <body>
-    <section id="header">
-        <a asp-page="/index" class="mobile-hide" asp-fragment=""><span>Henry Hiles</span></a>
+    <header id="header">
+        <a asp-page="/index" class="mobile-hide" asp-fragment=""><img src="~/images/logo.png" alt="Henry Hiles"></a>
         <div id="header-links">
             <a asp-page="/index" asp-fragment="">Home</a>
             <a asp-page="/index" asp-fragment="portfolio">My Projects</a>
@@ -29,7 +29,7 @@
                 <img src="/images/GitHubIcon.png" alt=" GitHub Icon">
             </a>
         </div>
-    </section>
+    </header>
     <div>
         <main role="main">
             @RenderBody()
@@ -39,17 +39,17 @@
     <section id="footer">
         <div>
             <h3>My Projects</h3>
-            <p>You can see my projects <a asp-page="index" asp-fragment="portfolio">here</a>.</p>
-        </div>
-        <div>
-            <h3>Contact</h3>
-            <p>You can contact me <a asp-page="index" asp-fragment="contact">here</a>.</p>
+            <p>You can see all of my projects <a asp-page="index" asp-fragment="portfolio">at the projects section here</a>.</p>
         </div>
         <div>
             <h3>About</h3>
             <p>
                 Hi! I'm Henry Hiles, a full stack .NET developer. I specialize in ASP.NET Core Razor Pages and Blazor.
             </p>
+        </div>
+        <div>
+            <h3>Contact</h3>
+            <p>You can contact me at my <a asp-page="index" asp-fragment="contact">contact form here</a>. Your message will be replied to by email.</p>
         </div>
     </section>
     <script src="~/js/site.js" asp-append-version="true"></script>
