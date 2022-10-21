@@ -459,7 +459,7 @@ svg {
     background-image: url(../images/computer.png);
     height: 350px;
     width: 440px;
-    transform: translate(-420px, -17px);
+    transform: translate(-220px, -250px);
 }
 
 .mobile:after {
